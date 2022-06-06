@@ -2,5 +2,7 @@ package model;
 
 public class Ship {
 
-    private String name;
+    private int x;
+
+    private int y;
 }
