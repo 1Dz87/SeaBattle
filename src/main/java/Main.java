@@ -43,38 +43,73 @@ public class Main {
         ship.smth(doubles);
     }*/
 
+    private static final String STRING_CONSTANT = "Нейкая строка";
+
+    public static final String EXCLAMATION_MARKS = "!!";
+
+    public static final String QUESTION_MARKS = "??";
+
     public static void main(String[] args) {
-        Moveable ship = new Ship();
-        ship.move("right");
+        final String str = "some string";
+        Car car = new Car("Mercedes");
+        int num = Car.number;
+        String s = Car.moreStrings;
+        //doSmth(5);
+        doSwitch(5);
+    }
 
-        Moveable car = new Car();
-        car.move("left");
+    public static void doSmth(int x) {
+        if (x == 1) {
+            System.out.println("Это 1");
+        } else if (x == 2) {
+            System.out.println("Это больше одно, но меньше 3-х");
+        } else if (x == 3) {
+            System.out.println("Это 3");
+        } else {
+            System.out.println("Слишком большое число");
+        }
+    }
 
-        ArrayList<Moveable> moveables = new ArrayList<>(); // асширяемый массив
-        moveables.add(ship); // Добавить элемент в коллекцию, в данном случ. объект ship
-        moveables.add(car);
+    public static void switchString(String s) {
+        Car car = new Car("Mercedes");
+        switch (s) {
+            case EXCLAMATION_MARKS:
+                System.out.println("Don't shout!");
+                break;
+            case QUESTION_MARKS:
+                System.out.println("What is the question?");
+                break;
+            default:
+                System.out.println("I can't hear you.");
+        }
+    }
 
-        int indexOfCar = moveables.indexOf(car); // Получить индекс текущего элемента коллекции
-        moveables.remove(indexOfCar); // Удалить текущий элемент из коллекции
-        moveables.clear(); // очистить коллекцию
-        boolean isInCollection = moveables.contains(ship); // Возвращает TRUE, если элемент присутствует в коллекции
-        moveables.lastIndexOf(car); // Возвращает последний индекс элемента в коллекции
-        int size = moveables.size(); // Возвращает текущий размер коллекции
-
-        LinkedList<Moveable> moveableLinkedList = new LinkedList<>();
-        moveableLinkedList.add(ship);
-        moveableLinkedList.add(car);
-
-        moveableLinkedList.get(0);
-        moveableLinkedList.remove(car);
-
-        Moveable shipFromArray = moveables.get(0);
-
-        moveables.remove(1);
-        moveables.remove(car);
-
-        if (ship instanceof Sinkable) {
-            ((Sinkable) ship).sink(15f);
+    public static void doSwitch(int x) {
+        switch (x) {
+            case 1:
+                System.out.println("Это 1");
+                break;
+            case 2:
+                System.out.println("Это больше одного, но меньше 3-х");
+                break;
+            case 3:
+                System.out.println("Это 3");
+                break;
+            case 4:
+            case 5:
+            case 6:
+                System.out.println("Это меньше 7-ми");
+                break;
+            default:
+                System.out.println("Слишком большое число");
         }
     }
 }
+/**
+ * ? - вопросительный знак
+ * ! - восклицательный знак
+ * [.,;] - знак препинания
+ * [:-] - Что это?
+ * по умолчанию - не известный знак
+ *
+ */
