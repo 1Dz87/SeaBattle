@@ -1,115 +1,67 @@
-import interfaces.Moveable;
-import interfaces.Sinkable;
-import model.Car;
-import model.Ship;
+import model.Caffee;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import java.io.*;
 
 public class Main {
 
-    /*public static void main(String[] args) {
-        ArrayList<Integer> integers = new ArrayList<>();
-        integers.add(7);
-        integers.add(13);
-        integers.add(2);
-        integers.add(1);
-        integers.add(17);
-        integers.add(44);
-        integers.add(22);
-
-        int x;
-        Integer ex; // null
-        Boolean b; // true, false, null
-
-        integers.remove(Integer.valueOf(17));
-        for (int i = 0; i < integers.size(); i++) {
-            System.out.println(integers.get(i));
-        }
-        // int -> Integer
-        // float -> Float
-        // long -> Long
-        // double -> Double
-        // char -> Character
-        // short -> Short
-        // byte -> Byte
-        // boolean -> Boolean
-    }*/
-
-/*    public static void main(String[] args) {
-        LinkedList<Double> doubles = new LinkedList<>();
-        Ship ship = new Ship();
-        ship.smth(doubles);
-    }*/
-
-    private static final String STRING_CONSTANT = "Нейкая строка";
-
-    public static final String EXCLAMATION_MARKS = "!!";
-
-    public static final String QUESTION_MARKS = "??";
-
     public static void main(String[] args) {
-        final String str = "some string";
-        Car car = new Car("Mercedes");
-        int num = Car.number;
-        String s = Car.moreStrings;
-        //doSmth(5);
-        doSwitch(5);
+        Caffee caffee = new Caffee();
+        caffee.cook("Винстон синий");
     }
 
-    public static void doSmth(int x) {
-        if (x == 1) {
-            System.out.println("Это 1");
-        } else if (x == 2) {
-            System.out.println("Это больше одно, но меньше 3-х");
-        } else if (x == 3) {
-            System.out.println("Это 3");
-        } else {
-            System.out.println("Слишком большое число");
+    public static void division(int x, int y) {
+        System.out.println(x/y);
+    }
+
+    public static void readLineUnchecked() throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String s = reader.readLine();
+        System.out.println(s);
+    }
+
+    public static void readLine() {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        try {
+            String s = reader.readLine();
+            System.out.println(s);
+        } catch (IOException ex) {
+            System.out.println("Произошла ошибка ввода/вывода");
+            /*try {
+                reader = new BufferedReader(new FileReader(new File("C:/logs.txt")));
+                String s = reader.readLine();
+            } catch (IOException e) {
+
+            }*/
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            System.out.println("This is finally block");
         }
     }
 
-    public static void switchString(String s) {
-        Car car = new Car("Mercedes");
-        switch (s) {
-            case EXCLAMATION_MARKS:
-                System.out.println("Don't shout!");
-                break;
-            case QUESTION_MARKS:
-                System.out.println("What is the question?");
-                break;
-            default:
-                System.out.println("I can't hear you.");
-        }
-    }
+    /**
+     * 1.Error - ошибка, которая возникает во время работы программы (Runtime).
+     * 2.Exception - исключительная ситуация, которая может возникать как в
+     *              Runtime так и в Compiletime.
+     *   a). Сompiletime exception - это проверяемые исключения, наследуются от
+     *                              класса Exception
+     *   б). Runtime exception - это не проверяемые исключения, наследуются от
+     *                           класса RuntimeException
+     */
 
-    public static void doSwitch(int x) {
-        switch (x) {
-            case 1:
-                System.out.println("Это 1");
-                break;
-            case 2:
-                System.out.println("Это больше одного, но меньше 3-х");
-                break;
-            case 3:
-                System.out.println("Это 3");
-                break;
-            case 4:
-            case 5:
-            case 6:
-                System.out.println("Это меньше 7-ми");
-                break;
-            default:
-                System.out.println("Слишком большое число");
-        }
-    }
+    /**
+     * Создать 2 исключения:
+     * 1. Проверяемое исключение
+     * 2. Не проверяемое исключения
+     * Для метода
+     * String sell(float cash, String dishName)
+     * написать следующую логику:
+     * а). Определить стоимость блюда значением 4.75
+     * б). если сдача получается меньше 1, то бросить проверяемое исключение
+     * в). вызвать метод String cook(String dishName),
+     *      в котором если блюдо не найдено, то бросается не проверяемое исключение
+     */
 }
-/**
- * ? - вопросительный знак
- * ! - восклицательный знак
- * [.,;] - знак препинания
- * [:-] - Что это?
- * по умолчанию - не известный знак
- *
- */
